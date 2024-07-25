@@ -4,9 +4,9 @@ package history
 import (
 	"database/sql"
 	"fmt"
+	"github.com/Cellularhacker/logger"
 	_ "github.com/mattn/go-sqlite3"
 	"io"
-	"namebench/util/logger"
 	"os"
 	"sync"
 )

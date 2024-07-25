@@ -2,9 +2,9 @@
 package history
 
 import (
+	"github.com/Cellularhacker/logger"
 	"golang.org/x/net/publicsuffix"
 	"math/rand"
-	"namebench/util/logger"
 	"net/url"
 	"regexp"
 )

@@ -2,9 +2,9 @@ package dnschecks
 
 import (
 	"fmt"
+	"github.com/Cellularhacker/logger"
 	"namebench/model/namebench/record"
 	"namebench/service/dnsqueue"
-	"namebench/util/logger"
 	"net"
 	"sort"
 	"strings"
