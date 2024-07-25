@@ -3,10 +3,10 @@ package dnsqueue
 
 import (
 	"fmt"
+	"github.com/Cellularhacker/logger"
 	json "github.com/json-iterator/go"
 	"github.com/miekg/dns"
 	"namebench/model/namebench/record"
-	"namebench/util/logger"
 	"time"
 )
 
@@ -66,7 +66,7 @@ type Results []Result
 
 func (rs *Results) ExtractRecords() *record.Records {
 	result := make(record.Records, 0)
-	
+
 	for _, r := range *rs {
 		result = append(result, r.ExtractRecords()...)
 	}

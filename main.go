@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/Cellularhacker/logger"
 	"log"
 	"namebench/ui"
 	"namebench/util"
-	"namebench/util/logger"
 	"net"
 	"net/http"
 	"os"

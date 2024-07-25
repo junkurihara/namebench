@@ -2,6 +2,7 @@
 package ui
 
 import (
+	"github.com/Cellularhacker/logger"
 	"html/template"
 	"namebench/model/namebench/record"
 	"namebench/service/dnschecks"
@@ -9,7 +10,6 @@ import (
 	history2 "namebench/service/history"
 	"namebench/util"
 	"namebench/util/apiError"
-	"namebench/util/logger"
 	"net/http"
 	"strconv"
 	"strings"
