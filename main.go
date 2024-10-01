@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/Cellularhacker/core-go"
-	"github.com/Cellularhacker/logger"
+	"github.com/Cellularhacker/logger-go"
 	"namebench/ui"
 	"namebench/util"
 	"net"

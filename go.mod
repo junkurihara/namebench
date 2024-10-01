@@ -5,7 +5,7 @@ go 1.23.1
 require (
 	github.com/Cellularhacker/apiError-go v0.0.3
 	github.com/Cellularhacker/core-go v1.0.7
-	github.com/Cellularhacker/logger v1.0.3
+	github.com/Cellularhacker/logger-go v1.0.4
 	github.com/goccy/go-json v0.10.3
 	github.com/mattn/go-sqlite3 v1.14.23
 	github.com/miekg/dns v1.1.62
@@ -13,6 +13,7 @@ require (
 )
 
 require (
+	github.com/Cellularhacker/logger v1.0.3 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/onsi/ginkgo v1.16.5 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect

@@ -3,7 +3,7 @@ package ui
 
 import (
 	"github.com/Cellularhacker/apiError-go"
-	"github.com/Cellularhacker/logger"
+	"github.com/Cellularhacker/logger-go"
 	"html/template"
 	"namebench/model/namebench/record"
 	"namebench/service/dnschecks"
