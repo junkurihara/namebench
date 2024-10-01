@@ -2,8 +2,8 @@ package util
 
 import (
 	"github.com/Cellularhacker/apiError-go"
+	"github.com/Cellularhacker/util-go/pageInfo"
 	"github.com/goccy/go-json"
-	"namebench/model/_util/pageInfo"
 	"net/http"
 )
 
