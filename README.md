@@ -19,7 +19,7 @@ What can one expect in namebench 2.0?
 
 BUILDING:
 =========
-Building requires Go 1.19 to be installed: http://golang.org/
+Building requires Go 1.23.1 to be installed: http://golang.org/
 
 * Create a workspace directory, and cd into it.
 * Prepare your workspace directory:
