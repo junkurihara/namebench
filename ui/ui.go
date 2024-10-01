@@ -2,14 +2,14 @@
 package ui
 
 import (
-	"github.com/Cellularhacker/logger"
+	"github.com/Cellularhacker/apiError-go"
+	"github.com/Cellularhacker/logger-go"
 	"html/template"
 	"namebench/model/namebench/record"
 	"namebench/service/dnschecks"
 	"namebench/service/dnsqueue"
-	history2 "namebench/service/history"
+	"namebench/service/history"
 	"namebench/util"
-	"namebench/util/apiError"
 	"net/http"
 	"strconv"
 	"strings"
@@ -117,20 +117,20 @@ func Submit(w http.ResponseWriter, r *http.Request) {
 }
 
 func DoSubmit() (*dnsqueue.Results, error) {
-	records, err := history2.Chrome(HistoryDays)
+	records, err := history.Chrome(HistoryDays)
 	if err != nil {
 		logger.L.Errorln("history2.Chrome(HistoryDays)", err)
 		return nil, err
 	}
 
 	q := dnsqueue.StartQueue(QueueLength, WORKERS)
-	extHostnames := history2.ExternalHostnames(records)
-	extUniqHostnames := history2.Uniq(extHostnames)
-	hostnames := history2.Random(COUNT, extUniqHostnames)
+	extHostnames := history.ExternalHostnames(records)
+	extUniqHostnames := history.Uniq(extHostnames)
+	hostnames := history.Random(COUNT, extUniqHostnames)
 
-	for _, record := range hostnames {
-		q.Add("8.8.8.8:53", "A", record+".")
-		//logger.L.Infof("Added %s", record)
+	for _, hostname := range hostnames {
+		q.Add("8.8.8.8:53", "A", hostname+".")
+		//logger.L.Infof("Added %s", hostname)
 	}
 	q.SendCompletionSignal()
 

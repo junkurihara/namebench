@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/Cellularhacker/logger"
-	"log"
+	"github.com/Cellularhacker/core-go"
+	"github.com/Cellularhacker/logger-go"
 	"namebench/ui"
 	"namebench/util"
 	"net"
@@ -22,7 +22,8 @@ var joinStr = flag.String("join_string", " ", "Use with '-mode now'. default val
 var dnsFilter = flag.Int("dns_filter", 0, "0: All, 1: Non-ISP Only, 2: ISP Only")
 
 func init() {
-	logger.Init()
+	logger.Init(core.IsPM())
+	core.SetLoc(core.LocationKST())
 }
 
 // openWindow opens a nodejs-webkit window, and points it at the given URL.
@@ -52,7 +53,7 @@ func main() {
 	if *mode == "extract_hostname" {
 		drs, err := ui.DoSubmit()
 		if err != nil {
-			log.Fatal(err)
+			logger.L.Fatal(err)
 		}
 
 		fmt.Println(drs.ExtractRecords().String())
@@ -68,7 +69,7 @@ func main() {
 	} else {
 		listener, err := net.Listen("tcp4", "127.0.0.1:0")
 		if err != nil {
-			log.Fatalf("Failed to listen: %s", err)
+			logger.L.Fatalf("Failed to listen: %s", err)
 		}
 		url := fmt.Sprintf("http://%s/", listener.Addr().String())
 		logger.L.Infof("URL: %s", url)

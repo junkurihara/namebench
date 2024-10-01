@@ -1,9 +1,9 @@
 package util
 
 import (
-	json "github.com/json-iterator/go"
-	"namebench/model/_util/pageInfo"
-	"namebench/util/apiError"
+	"github.com/Cellularhacker/apiError-go"
+	"github.com/Cellularhacker/util-go/pageInfo"
+	"github.com/goccy/go-json"
 	"net/http"
 )
 

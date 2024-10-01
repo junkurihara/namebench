@@ -2,7 +2,7 @@ package dnschecks
 
 import (
 	"fmt"
-	"github.com/Cellularhacker/logger"
+	"github.com/Cellularhacker/logger-go"
 	"namebench/model/namebench/record"
 	"namebench/service/dnsqueue"
 	"net"

@@ -3,8 +3,8 @@ package dnsqueue
 
 import (
 	"fmt"
-	"github.com/Cellularhacker/logger"
-	json "github.com/json-iterator/go"
+	"github.com/Cellularhacker/logger-go"
+	"github.com/goccy/go-json"
 	"github.com/miekg/dns"
 	"namebench/model/namebench/record"
 	"time"
