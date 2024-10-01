@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/Cellularhacker/core-go"
 	"github.com/Cellularhacker/logger-go"
+	"github.com/Cellularhacker/util-go/uStrings"
 	"namebench/ui"
-	"namebench/util"
 	"net"
 	"net/http"
 	"os"
@@ -42,7 +42,7 @@ func main() {
 	ui.RegisterHandlers()
 
 	// MARK: Unescape
-	*joinStr = util.UnescapeAllEscapingCharacters(*joinStr)
+	*joinStr = uStrings.UnescapeAllEscapingCharacters(*joinStr)
 
 	if *mode == "now" {
 		result := ui.DoDnsSec(*dnsFilter)

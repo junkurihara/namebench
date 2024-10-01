@@ -3,13 +3,13 @@ package ui
 
 import (
 	"github.com/Cellularhacker/apiError-go"
+	"github.com/Cellularhacker/apiHandler-gin-go"
 	"github.com/Cellularhacker/logger-go"
 	"html/template"
 	"namebench/model/namebench/record"
 	"namebench/service/dnschecks"
 	"namebench/service/dnsqueue"
 	"namebench/service/history"
-	"namebench/util"
 	"net/http"
 	"strconv"
 	"strings"
@@ -68,12 +68,12 @@ func DnsSec(w http.ResponseWriter, r *http.Request) {
 	q := r.URL.Query()
 	qFilter, err := strconv.Atoi(q.Get("filter"))
 	if err != nil || qFilter < 0 || qFilter > 2 {
-		util.ErrorHandler(w, r, apiError.BadRequestError("filter"))
+		apiHandler.ErrorHandler(w, r, apiError.BadRequestError("filter"))
 		return
 	}
 	result := DoDnsSec(qFilter)
 
-	util.JSONHandler(w, r, *result, nil, http.StatusOK)
+	apiHandler.JSONHandler(w, r, *result, nil, http.StatusOK)
 }
 
 func DoDnsSec(filter int, records ...*record.Record) *dnschecks.CheckResults {
@@ -109,11 +109,11 @@ func DoDnsSec(filter int, records ...*record.Record) *dnschecks.CheckResults {
 func Submit(w http.ResponseWriter, r *http.Request) {
 	drs, err := DoSubmit()
 	if err != nil {
-		util.ErrorHandler(w, r, apiError.InternalServerError(err))
+		apiHandler.ErrorHandler(w, r, apiError.InternalServerError(err))
 		return
 	}
 
-	util.JSONHandler(w, r, drs, nil, http.StatusOK)
+	apiHandler.JSONHandler(w, r, drs, nil, http.StatusOK)
 }
 
 func DoSubmit() (*dnsqueue.Results, error) {
@@ -158,18 +158,18 @@ func SubmitAndRun(w http.ResponseWriter, r *http.Request) {
 	q := r.URL.Query()
 	qFilter, err := strconv.Atoi(q.Get("filter"))
 	if err != nil || qFilter < 0 || qFilter > 2 {
-		util.ErrorHandler(w, r, apiError.BadRequestError("filter"))
+		apiHandler.ErrorHandler(w, r, apiError.BadRequestError("filter"))
 		return
 	}
 	dataType := q.Get("data_type")
 	if dataType != "" && dataType != "array" && dataType != "map" {
-		util.ErrorHandler(w, r, apiError.BadRequestError("data_type"))
+		apiHandler.ErrorHandler(w, r, apiError.BadRequestError("data_type"))
 		return
 	}
 
 	drs, err := DoSubmit()
 	if err != nil {
-		util.ErrorHandler(w, r, apiError.InternalServerError(err))
+		apiHandler.ErrorHandler(w, r, apiError.InternalServerError(err))
 		return
 	}
 
@@ -192,8 +192,8 @@ func SubmitAndRun(w http.ResponseWriter, r *http.Request) {
 		for _, sard := range sards {
 			resultMap[sard.Record.Name] = sard
 		}
-		util.JSONHandler(w, r, resultMap, nil, http.StatusOK)
+		apiHandler.JSONHandler(w, r, resultMap, nil, http.StatusOK)
 		return
 	}
-	util.JSONHandler(w, r, sards, nil, http.StatusOK)
+	apiHandler.JSONHandler(w, r, sards, nil, http.StatusOK)
 }
